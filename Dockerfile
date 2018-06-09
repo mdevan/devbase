@@ -6,8 +6,8 @@ ENV NODEJSVER=8.11.2-1nodesource1
 RUN apt-get -yq update
 RUN apt-get -yq upgrade
 RUN apt-get -yq autoremove
-RUN apt-get -yq install gnupg curl apt-transport-https fakeroot make gcc \
-		rsync ruby ruby-dev git sudo
+RUN apt-get -yq install python3-pip gnupg curl apt-transport-https fakeroot \
+		dh-autoreconf make gcc g++ rsync ruby ruby-dev git sudo
 
 # nodejs 8, postgres 10
 RUN curl --silent https://deb.nodesource.com/gpgkey/nodesource.gpg.key | \
@@ -35,11 +35,11 @@ RUN chmod 644 /etc/profile.d/golang.sh
 RUN GOPATH=/root/go /usr/local/go/bin/go get golang.org/x/tools/cmd/goimports
 RUN cp /root/go/bin/goimports /usr/bin
 
-# saas
-RUN gem install sass
+# saas, jekyll and friends
+RUN gem install sass pygments.rb rouge bundle
 
-# jekyll
-RUN gem install jekyll
+# pygments
+RUN pip3 install Pygments
 
 CMD ["/bin/bash"]
 
