@@ -1,7 +1,7 @@
 FROM debian:stretch-20180312
 
 ENV GOLANGVER=1.10.3
-ENV NODEJSVER=8.11.2-1nodesource1
+ENV NODEJSVER=8.11.3-1nodesource1
 
 RUN apt-get -yq update
 RUN apt-get -yq upgrade
