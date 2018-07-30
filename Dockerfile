@@ -21,8 +21,9 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main" | \
 RUN apt-get -yq update
 RUN apt-get -yq install nodejs=${NODEJSVER} postgresql-10
 
-# uglify-es 3, less
-RUN /usr/bin/npm install -g uglify-js less clean-css less-plugin-clean-css
+# uglify-es 3, less, typescript
+RUN /usr/bin/npm install -g uglify-js less clean-css less-plugin-clean-css \
+		typescript
 
 # go
 RUN curl -o /tmp/go.tar.gz https://dl.google.com/go/go${GOLANGVER}.linux-amd64.tar.gz
