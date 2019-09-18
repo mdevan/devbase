@@ -12,11 +12,11 @@ RUN apt-get -yq install python3-pip gnupg curl apt-transport-https fakeroot \
 # nodejs 8, postgres 10
 RUN curl --silent https://deb.nodesource.com/gpgkey/nodesource.gpg.key | \
 		apt-key add -
-RUN echo "deb https://deb.nodesource.com/node_10.x stretch main" | \
+RUN echo "deb https://deb.nodesource.com/node_10.x buster main" | \
 		tee /etc/apt/sources.list.d/nodesource.list
 RUN curl --silent https://www.postgresql.org/media/keys/ACCC4CF8.asc | \
 		apt-key add -
-RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main" | \
+RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main" | \
 		tee /etc/apt/sources.list.d/pgdg.list
 RUN apt-get -yq update
 RUN apt-get -yq install nodejs=${NODEJSVER} postgresql-10
