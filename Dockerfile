@@ -1,7 +1,7 @@
-FROM debian:stretch-20180312
+FROM debian:buster-20190910
 
-ENV GOLANGVER=1.10.3
-ENV NODEJSVER=8.11.3-1nodesource1
+ENV GOLANGVER=1.13
+ENV NODEJSVER=10.16.3-1nodesource1
 
 RUN apt-get -yq update
 RUN apt-get -yq upgrade
@@ -12,7 +12,7 @@ RUN apt-get -yq install python3-pip gnupg curl apt-transport-https fakeroot \
 # nodejs 8, postgres 10
 RUN curl --silent https://deb.nodesource.com/gpgkey/nodesource.gpg.key | \
 		apt-key add -
-RUN echo "deb https://deb.nodesource.com/node_8.x stretch main" | \
+RUN echo "deb https://deb.nodesource.com/node_10.x stretch main" | \
 		tee /etc/apt/sources.list.d/nodesource.list
 RUN curl --silent https://www.postgresql.org/media/keys/ACCC4CF8.asc | \
 		apt-key add -
