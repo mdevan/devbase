@@ -1,7 +1,7 @@
-FROM debian:buster-20190910
+FROM debian:buster-20200514
 
-ENV GOLANGVER=1.13
-ENV NODEJSVER=10.16.3-1nodesource1
+ENV GOLANGVER=1.14.3
+ENV NODEJSVER=12.16.3-1nodesource1
 
 RUN apt-get -yq update
 RUN apt-get -yq upgrade
@@ -9,10 +9,10 @@ RUN apt-get -yq autoremove
 RUN apt-get -yq install python3-pip gnupg curl apt-transport-https fakeroot \
 		dh-autoreconf make gcc g++ rsync ruby ruby-dev git sudo
 
-# nodejs 8, postgres 10
+# nodejs, postgres 10
 RUN curl --silent https://deb.nodesource.com/gpgkey/nodesource.gpg.key | \
 		apt-key add -
-RUN echo "deb https://deb.nodesource.com/node_10.x buster main" | \
+RUN echo "deb https://deb.nodesource.com/node_12.x buster main" | \
 		tee /etc/apt/sources.list.d/nodesource.list
 RUN curl --silent https://www.postgresql.org/media/keys/ACCC4CF8.asc | \
 		apt-key add -
@@ -21,8 +21,8 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main" | \
 RUN apt-get -yq update
 RUN apt-get -yq install nodejs=${NODEJSVER} postgresql-10
 
-# uglify-es 3, less, typescript
-RUN /usr/bin/npm install -g uglify-js less clean-css less-plugin-clean-css \
+# terser, less, sass, typescript
+RUN /usr/bin/npm install -g terser less clean-css less-plugin-clean-css \
 		typescript
 
 # go
