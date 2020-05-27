@@ -1,7 +1,7 @@
 FROM debian:buster-20200514
 
 ENV GOLANGVER=1.14.3
-ENV NODEJSVER=12.16.3-1nodesource1
+ENV NODEJSVER=12.17.0-1nodesource1
 
 RUN apt-get -yq update
 RUN apt-get -yq upgrade
@@ -36,8 +36,8 @@ RUN chmod 644 /etc/profile.d/golang.sh
 RUN GOPATH=/root/go /usr/local/go/bin/go get golang.org/x/tools/cmd/goimports
 RUN cp /root/go/bin/goimports /usr/bin
 
-# saas, jekyll and friends
-RUN gem install sass pygments.rb rouge bundle
+# jekyll and friends
+RUN gem install pygments.rb rouge bundler jekyll
 
 # pygments
 RUN pip3 install Pygments
