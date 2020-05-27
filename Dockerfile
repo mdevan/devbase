@@ -22,7 +22,7 @@ RUN apt-get -yq update
 RUN apt-get -yq install nodejs=${NODEJSVER} postgresql-10
 
 # terser, less, sass, typescript
-RUN /usr/bin/npm install -g terser less clean-css less-plugin-clean-css \
+RUN /usr/bin/npm install -g terser sass less clean-css less-plugin-clean-css \
 		typescript
 
 # go
